@@ -226,7 +226,7 @@ def get_user_follower_ids_fromDB(uid):
         return None
     cursor=conn.cursor()
     try:
-        sql=("select user1ID from userrelation"
+        sql=("select user1ID from userrelation"	--uspget_user_follower_ids
              " where User2ID=%(uid)s")
         data={"uid":uid}
         cursor.execute(sql,data)
@@ -246,7 +246,7 @@ def checkAvailableUsername(username):
     else:
         try:
             cursor=conn.cursor()
-            sql="select username in userdb.userinfo where username =%(user)s "
+            sql="select username in userdb.userinfo where username =%(user)s " --uspcheckAvailableUsername
             data={"user":username}
             cursor.execute(sql,data)
             if (cursor.rowcount>0):
@@ -280,7 +280,7 @@ def getUserPasswordByID(userid):
         return None
     cursor=conn.cursor()
     try:
-        sql="SELECT Password FROM userdb.userinfo WHERE ID =%(uid)s "
+        sql="SELECT Password FROM userdb.userinfo WHERE ID =%(uid)s " --uspgetUserPasswordByID
         data={"uid":userid}
         cursor.execute(sql,data)
         result=cursor.fetchall()
